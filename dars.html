@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoM</title>
+</head>
+<body>
+<input type="text" placeholder="matn kiriting">
+<button onclick="add()">Qoshish</button>
+<ul></ul>
+
+<script>
+    const input = document.querySelector('input')
+    const ul = document.querySelector('ul')
+
+    function add() {
+        let value = input.value
+        let li = document.createElement('li')
+        let deleteBtn = document.createElement('button')
+        deleteBtn.innerText = 'X'
+        deleteBtn.onclick = () => deleteEl(deleteBtn)
+
+        li.innerText = value
+
+        li.append(deleteBtn)
+        ul.append(li)
+        input.value = ''
+    }
+
+
+    function deleteEl(element) {
+        element.parentElement.remove();
+    }
+
+</script>
+</body>
+</html>
