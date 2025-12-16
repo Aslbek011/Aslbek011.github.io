@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM </title>
+    <title>DOM</title>
 
     <style>
 
@@ -140,7 +140,7 @@
 <body>
 
 <div class="content">
-    <h2> Ro‘yxat</h2>
+    <h2> Royxat</h2>
     <input type="text" placeholder="Matn kiriting">
     <br><br>
     <button onclick="add()">Qo‘shish</button>
@@ -160,7 +160,7 @@
         if (!value) return;
 
         let li = document.createElement("li");
-        li.innerHTML = ${value} <button onclick="deleteEl(this)">❌</button>;
+        li.innerHTML = ${value} <button onclick="deleteEl(this)">X</button>;
         ul.appendChild(li);
 
         input.value = "";
