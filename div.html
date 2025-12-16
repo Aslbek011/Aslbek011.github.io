@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM </title>
+
+    <style>
+
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #00f5d4, #0bbcd6, #03045e);
+            overflow: hidden;
+            perspective: 1200px;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -50%;
+            background: linear-gradient(
+                    120deg,
+                    rgba(255,255,255,0.2),
+                    rgba(255,255,255,0.05),
+                    rgba(255,255,255,0.2)
+            );
+            transform: rotateZ(0deg) translateZ(-300px);
+            animation: bg3d 15s linear infinite;
+        }
+
+        @keyframes bg3d {
+            0% {
+                transform: rotateZ(0deg) translateX(0);
+            }
+            100% {
+                transform: rotateZ(360deg) translateX(400px);
+            }
+        }
+
+
+        .content {
+            position: relative;
+            z-index: 1;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+            width: 550px;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        button {
+            height: 40px;
+            padding: 0 20px;
+            font-size: 16px;
+            background: #ffb703;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        ul {
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            background: rgba(255,255,255,0.85);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: pop 0.3s ease;
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        li button {
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+        }
+
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px 0;
+            color: white;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="content">
+    <h2> Ro‘yxat</h2>
+    <input type="text" placeholder="Matn kiriting">
+    <br><br>
+    <button onclick="add()">Qo‘shish</button>
+    <ul></ul>
+</div>
+
+<footer>
+    © 2025 umrbek aslbek
+</footer>
+
+<script>
+    const input = document.querySelector("input");
+    const ul = document.querySelector("ul");
+
+    function add() {
+        let value = input.value.trim();
+        if (!value) return;
+
+        let li = document.createElement("li");
+        li.innerHTML = ${value} <button onclick="deleteEl(this)">❌</button>;
+        ul.appendChild(li);
+
+        input.value = "";
+    }
+    function deleteEl(btn) {
+        btn.parentElement.remove();
+    }
+</script>
+
+</body>
+</html>
